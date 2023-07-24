@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 def lowpass(y,n): #位相はズレる
     Res = np.array([0])
     dt = 0.02
-
-    for yn,yn_1 in zip(y[1:],y[:-1]):
-        res = (dt*(yn+yn_1)+(2*n-dt)*Res[-1])/(2*n+dt)
+    A = n/(n+dt)
+    for yn in y[1:]:
+        res = (1-A)*yn+A*Res[-1]
         Res = np.append(Res,res)
     return Res
 
