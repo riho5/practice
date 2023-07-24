@@ -33,9 +33,9 @@ def complementaryfilter(a,g,n = 0.05):
     # return -> angle [deg]
 
     Res = np.array([0])
-    ts = 0.02 #timestep
+    dt = 0.02 #timestep
     for an,an_1,gn,gn_1 in zip(a[1:],a[:-1],g[1:],g[:-1]):
-        res = (2*n-ts)/(2*n+ts)*Res[-1]+ts/(2*n+ts)*(an+an_1)+ts*n/(2*n+ts)*(gn+gn_1)
+        res = (2*n-dt)/(2*n+dt)*Res[-1]+dt/(2*n+dt)*(an+an_1)+dt*n/(2*n+dt)*(gn+gn_1)
         Res = np.append(Res,res)
     
     return np.degrees(Res)
